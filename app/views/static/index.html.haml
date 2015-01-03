@@ -1,7 +1,7 @@
 .metro
   .container
     %h1.text-center Save The Relationship
-    %a.btn.btn-grey.btn-block{:href => "timeline.html", :role => "button", :style => "color: white; height: 50px"}
+    = link_to timeline_path, class: 'btn btn-grey btn-block', role: 'button', style: 'color: white; height: 50px' do
       %p.text-center.h4 Timeline
     %form#form{:action => "", :onsubmit => "", :target => "_self"}
       %h3.text-center 我是

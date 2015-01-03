@@ -1,34 +1,32 @@
 :css
-      #Pagination {
-        margin: 10px 0px; 
-        padding-top: 10px; 
-        display: inline-block;}
+  #Pagination {
+    margin: 10px 0px;
+    padding-top: 10px;
+    display: inline-block;}
 
-    #Pagination a {cursor: hand;}
+  #Pagination a {cursor: hand;}
 
-    .table-pagination {
-    width:100%;
-    margin: 0, auto;}
-    
-    .no-pag:hover {color: #acacac;}
+  .table-pagination {
+  width:100%;
+  margin: 0, auto;}
 
-    input {border: none; border-bottom: 1px solid #333;margin: 10px 0px; width: 200px; font-size: 16px; padding-bottom: 6px;}
-    .tHeader {padding: 8px; cursor: pointer; text-align: center;} 
-    .container2{
-      margin: 3px 0;
-      -moz-box-shadow:    0px 3px 3px 0px black;
-  -webkit-box-shadow: 0px 3px 3px 0px black;
-  box-shadow:         0px 3px 3px 0px black;
-}
+  .no-pag:hover {color: #acacac;}
 
-.list-unstyled #ava
-{
-  font-size: 12px;
-}
+  input {border: none; border-bottom: 1px solid #333;margin: 10px 0px; width: 200px; font-size: 16px; padding-bottom: 6px;}
+  .tHeader {padding: 8px; cursor: pointer; text-align: center;}
+  .container2{
+    margin: 3px 0;
+    box-shadow:  0px 3px 3px 0px black;
+  }
+
+  .list-unstyled #ava
+  {
+    font-size: 12px;
+  }
 .metro
   .container.scroll
     %h1.text-center Save The Relationship
-    %a.btn.btn-grey.btn-block{:href => "index.html", :role => "button", :style => "color: white; height: 50px"}
+    = link_to home_path, class: 'btn btn-grey btn-block', role: 'button', style: 'color: white; height: 50px' do
       %p.text-center.h4 Data Logging
     %br
       #fullTable

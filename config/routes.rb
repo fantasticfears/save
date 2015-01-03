@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get '/', to: 'static#index'
-  get '/timeline', to: 'static#timeline'
+  get '/', to: 'static#index', as: :home
+  get '/timeline', to: 'static#timeline', as: :timeline
 
   root to: 'static#index'
 end
