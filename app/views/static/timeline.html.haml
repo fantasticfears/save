@@ -45,15 +45,3 @@
                   .col-xs-5.comment.text-left {{comment}}
             {{/rows}}
             %tr
-      :javascript
-        document.addEventListener('DOMContentLoaded', function() {
-          var URL = "1T2L8EEjSyyTIkHqLwyfCyjLHP_DuAruv28Lkxw7YxBI"
-          Tabletop.init( { key: URL, callback: showInfo, simpleSheet: true, order:'Timestamp' } )
-        })
-
-        function showInfo(data) {
-          var tableOptions = {"data": data
-          , "pagination": 20, "tableDiv": "#fullTable", "filterDiv": "#fullTableFilter"}
-          Sheetsee.makeTable(tableOptions)
-          Sheetsee.initiateTableFilter(tableOptions)
-        }

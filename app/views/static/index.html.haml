@@ -70,35 +70,3 @@
       %h3.text-center 详细说明
       %input#comment.form-control{:name => "comment", :type => "text"}
         %input#send.h3.btn.btn-block.btn-blue2{:type => "submit"}
-    :javascript
-      function postToGoogle() {
-        var user = $("input[type='radio'][name='user']:checked").val();
-        var status = $("input[type='radio'][name='status']:checked").val();
-        var ava = $("input[type='radio'][name='ava']:checked").val();
-        var comment = $('#comment').val();
-        $.ajax({
-          url: "https://docs.google.com/forms/d/10Xc6b8g4nJGXsqVbUstAXw60_iH_uGH9YPGV_Bz2QqI/formResponse",
-          data: { "entry.39164430":user,
-            "entry.481507923":status,
-            "entry.1696492596":ava,
-            "entry.87449680":comment
-            },
-            type: "POST",
-            dataType: "xml",
-            statusCode: {
-              0: function() {
-                window.location.replace("timeline.html");
-              },
-              200: function() {
-                window.location.replace("timeline.html");
-              }
-            }
-        });
-      }
-
-      $(document).ready(function(){
-        $('#form').submit(function() {
-          postToGoogle();
-          return false;
-        });
-      });
