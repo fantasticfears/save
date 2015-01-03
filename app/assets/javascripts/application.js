@@ -13,4 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require bootstrap-sprockets
+//= require bootstrap
+//= require bootstrap-table
+//= require sheetsee
+//= require tabletop1.3.4
 //= require_tree .

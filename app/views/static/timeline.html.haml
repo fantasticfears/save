@@ -1,0 +1,61 @@
+:css
+      #Pagination {
+        margin: 10px 0px; 
+        padding-top: 10px; 
+        display: inline-block;}
+
+    #Pagination a {cursor: hand;}
+
+    .table-pagination {
+    width:100%;
+    margin: 0, auto;}
+    
+    .no-pag:hover {color: #acacac;}
+
+    input {border: none; border-bottom: 1px solid #333;margin: 10px 0px; width: 200px; font-size: 16px; padding-bottom: 6px;}
+    .tHeader {padding: 8px; cursor: pointer; text-align: center;} 
+    .container2{
+      margin: 3px 0;
+      -moz-box-shadow:    0px 3px 3px 0px black;
+  -webkit-box-shadow: 0px 3px 3px 0px black;
+  box-shadow:         0px 3px 3px 0px black;
+}
+
+.list-unstyled #ava
+{
+  font-size: 12px;
+}
+.metro
+  .container.scroll
+    %h1.text-center Save The Relationship
+    %a.btn.btn-grey.btn-block{:href => "index.html", :role => "button", :style => "color: white; height: 50px"}
+      %p.text-center.h4 Data Logging
+    %br
+      #fullTable
+      %script#fullTable_template{:type => "text/html"}
+        %table
+          %tr
+            {{#rows}}
+            .row.scroll
+              .col-sm-12
+                .row.container2.vertical-align
+                  .col-xs-3.text-center{:class => "{{user}}"} {{user}}
+                  .col-xs-4.text-center{:class => "{{ava}}"}
+                    %ul.list-unstyled
+                      %li {{status}}
+                      %li#ava {{ava}}
+                  .col-xs-5.comment.text-left {{comment}}
+            {{/rows}}
+            %tr
+      :javascript
+        document.addEventListener('DOMContentLoaded', function() {
+          var URL = "1T2L8EEjSyyTIkHqLwyfCyjLHP_DuAruv28Lkxw7YxBI"
+          Tabletop.init( { key: URL, callback: showInfo, simpleSheet: true, order:'Timestamp' } )
+        })
+
+        function showInfo(data) {
+          var tableOptions = {"data": data
+          , "pagination": 20, "tableDiv": "#fullTable", "filterDiv": "#fullTableFilter"}
+          Sheetsee.makeTable(tableOptions)
+          Sheetsee.initiateTableFilter(tableOptions)
+        }

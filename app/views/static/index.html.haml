@@ -1,0 +1,104 @@
+.metro
+  .container
+    %h1.text-center Save The Relationship
+    %a.btn.btn-grey.btn-block{:href => "timeline.html", :role => "button", :style => "color: white; height: 50px"}
+      %p.text-center.h4 Timeline
+    %form#form{:action => "", :onsubmit => "", :target => "_self"}
+      %h3.text-center 我是
+      .btn-group.btn-group-justified{"data-toggle" => "buttons", :style => "height: 50px;line-height:100px"}
+        %label.btn.btn-red
+          %input#user{:name => "user", :type => "radio", :value => "Amanda"}
+            %p.h4 Amanda
+        %label.btn.btn-blue
+          %input#user{:name => "user", :type => "radio", :value => "Lok"}
+            %p.h4 Lok
+      %h3.text-center 状态
+      .btn-toolbar{"aria-label" => "...", "data-toggle" => "buttons", :role => "toolbar", :style => "height: 250px"}
+        .btn-group.btn-group-justified{"aria-label" => "...", :role => "group"}
+          %label.btn.btn-green
+            %input#status{:name => "status", :type => "radio", :value => "睡觉"}
+              %p.text-center.h5 睡觉
+          %label.btn.btn-green
+            %input#status{:name => "status", :type => "radio", :value => "起床"}
+              %p.text-center.h5 起床
+        .btn-group.btn-group-justified{"aria-label" => "...", :role => "group"}
+          %label.btn.btn-green
+            %input#status{:name => "status", :type => "radio", :value => "冲凉中"}
+              %p.text-center.h5 冲凉中
+          %label.btn.btn-green
+            %input#status{:name => "status", :type => "radio", :value => "做饭中"}
+              %p.text-center.h5 做饭中
+          %label.btn.btn-green
+            %input#status{:name => "status", :type => "radio", :value => "游戏中"}
+              %p.text-center.h5 游戏中
+          %label.btn.btn-green
+            %input#status{:name => "status", :type => "radio", :value => "作业中"}
+              %p.text-center.h5 作业中
+        .btn-group.btn-group-justified{"aria-label" => "...", :role => "group"}
+          %label.btn.btn-green
+            %input#status{:name => "status", :type => "radio", :value => "散步中"}
+              %p.text-center.h5 散步中
+          %label.btn.btn-green
+            %input#status{:name => "status", :type => "radio", :value => "移动中"}
+              %p.text-center.h5 移动中
+          %label.btn.btn-green
+            %input#status{:name => "status", :type => "radio", :value => "外出活动"}
+              %p.text-center.h5 外出活动
+        .btn-group.btn-group-justified{"aria-label" => "...", :role => "group"}
+          %label.btn.btn-green
+            %input#status{:name => "status", :type => "radio", :value => "上课中"}
+              %p.text-center.h5 上课中
+          %label.btn.btn-green
+            %input#status{:name => "status", :type => "radio", :value => "Lunch Break"}
+              %p.text-center.h5 Lunch Break
+        .btn-group.btn-group-justified{"aria-label" => "...", :role => "group"}
+          %label.btn.btn-green
+            %input#status{:name => "status", :type => "radio", :value => "想你"}
+              %p.text-center.h5 想你
+          %label.btn.btn-green
+            %input#status{:name => "status", :type => "radio", :value => "亲一个"}
+              %p.text-center.h5 亲一个
+      %h3.text-center 空闲度
+      .btn-toolbar{"aria-label" => "...", "data-toggle" => "buttons", :role => "toolbar", :style => "height: 50px"}
+        .btn-group.btn-group-justified{"aria-label" => "...", :role => "group"}
+          %label.btn.btn-yellow
+            %input#ava{:name => "ava", :type => "radio", :value => "busy"}
+              %p.text-center.h4 Busy
+          %label.btn.btn-yellow
+            %input#ava{:name => "ava", :type => "radio", :value => "free"}
+              %p.text-center.h4 Free
+      %h3.text-center 详细说明
+      %input#comment.form-control{:name => "comment", :type => "text"}
+        %input#send.h3.btn.btn-block.btn-blue2{:type => "submit"}
+    :javascript
+      function postToGoogle() {
+        var user = $("input[type='radio'][name='user']:checked").val();
+        var status = $("input[type='radio'][name='status']:checked").val();
+        var ava = $("input[type='radio'][name='ava']:checked").val();
+        var comment = $('#comment').val();
+        $.ajax({
+          url: "https://docs.google.com/forms/d/10Xc6b8g4nJGXsqVbUstAXw60_iH_uGH9YPGV_Bz2QqI/formResponse",
+          data: { "entry.39164430":user,
+            "entry.481507923":status,
+            "entry.1696492596":ava,
+            "entry.87449680":comment
+            },
+            type: "POST",
+            dataType: "xml",
+            statusCode: {
+              0: function() {
+                window.location.replace("timeline.html");
+              },
+              200: function() {
+                window.location.replace("timeline.html");
+              }
+            }
+        });
+      }
+
+      $(document).ready(function(){
+        $('#form').submit(function() {
+          postToGoogle();
+          return false;
+        });
+      });
