@@ -30,5 +30,8 @@ module Save
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    config.pbkdf2_iterations = 64000
+    config.pbkdf2_algorithm = 'sha256'
   end
 end
