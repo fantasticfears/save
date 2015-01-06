@@ -1,5 +1,6 @@
 class Couple < ActiveRecord::Base
   has_and_belongs_to_many :users
+  has_and_belongs_to_many :activities
 
   def add_user(user)
     self.users << user if self.users < 2

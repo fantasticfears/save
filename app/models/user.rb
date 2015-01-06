@@ -1,8 +1,11 @@
+require_dependency 'pbkdf2'
+require 'bcrypt'
+
 class User < ActiveRecord::Base
   attr_accessor :remember_token
 
   has_many :statuses
-  has_many :couples
+  has_and_belongs_to_many :couples
 
   before_validation :downcase_email
 
@@ -29,7 +32,7 @@ class User < ActiveRecord::Base
   end
 
   def name_validator
-    existing = User.find_by(username: username.downcase)
+    existing = User.find_by(name: name.downcase)
     if name_changed? && existing && existing.id != self.id
       errors.add(:name, I18n.t('user.name.unique'))
     end
