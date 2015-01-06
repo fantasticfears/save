@@ -1,4 +1,9 @@
 class Couple < ActiveRecord::Base
+  has_and_belongs_to_many :users
+
+  def add_user(user)
+    self.users << user if self.users < 2
+  end
 end
 
 # == Schema Information

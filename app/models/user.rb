@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
   attr_accessor :remember_token
 
+  has_many :statuses
+  has_many :couples
+
   before_validation :downcase_email
 
   validates_presence_of :name
