@@ -25,6 +25,13 @@ class User < ActiveRecord::Base
     BCrypt::Password.create(string, cost: cost)
   end
 
+  def name_validator
+    existing = User.find_by(username: username.downcase)
+    if name_changed? && existing && existing.id != self.id
+      errors.add(:name, I18n.t('user.name.unique'))
+    end
+  end
+
   def downcase_email
     self.email.downcase! if self.email
   end
