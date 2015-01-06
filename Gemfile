@@ -33,6 +33,8 @@ gem 'seed-fu', git: 'https://github.com/SamSaffron/seed-fu.git', branch: 'discou
 gem 'bcrypt'
 gem 'fast_xor'
 
+gem 'active_model_serializers'
+
 # frontend assets
 gem 'jquery-rails'
 gem 'bootstrap-sass', '~> 3.3.1'
