@@ -1,5 +1,6 @@
 class Status < ActiveRecord::Base
   belongs_to :user
+  belongs_to :couple
 end
 
 # == Schema Information
@@ -13,4 +14,5 @@ end
 #  details    :text             default(""), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  couple_id  :integer          not null
 #
