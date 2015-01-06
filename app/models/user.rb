@@ -1,7 +1,12 @@
 class User < ActiveRecord::Base
   attr_accessor :remember_token
 
+  before_validation :downcase_email
+
   validates_presence_of :name
+  validate :name_validator
+  validates :email, presence: true, uniqueness: true
+  validates :email, email: true, if: :email_changed?
   validate :password_validator, on: [:create]
 
   before_save :ensure_password_is_hashed
@@ -18,6 +23,10 @@ class User < ActiveRecord::Base
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
+  end
+
+  def downcase_email
+    self.email.downcase! if self.email
   end
 
   def password=(password)
@@ -79,4 +88,10 @@ end
 #  remember_hash :string(60)
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  email         :string
+#
+# Indexes
+#
+#  index_users_on_email  (email) UNIQUE
+#  index_users_on_name   (name) UNIQUE
 #

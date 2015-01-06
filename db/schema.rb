@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150103193136) do
+ActiveRecord::Schema.define(version: 20150106084830) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,10 @@ ActiveRecord::Schema.define(version: 20150103193136) do
     t.string   "remember_hash", limit: 60
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
+    t.string   "email"
   end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["name"], name: "index_users_on_name", unique: true, using: :btree
 
 end
