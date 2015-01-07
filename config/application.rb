@@ -16,6 +16,7 @@ Bundler.require(*Rails.groups)
 
 module Save
   class Application < Rails::Application
+    require 'save'
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -33,5 +34,8 @@ module Save
 
     config.pbkdf2_iterations = 64000
     config.pbkdf2_algorithm = 'sha256'
+
+    $redis = Redis.new(host: 'localhost', port: 6379)
+
   end
 end
