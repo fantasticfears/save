@@ -102,6 +102,11 @@ end
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  email         :string
+#  avatar        :string
+#  location      :string           default(""), not null
+#  timezone      :string           default(""), not null
+#  longitude     :string
+#  latitude      :string
 #
 # Indexes
 #
